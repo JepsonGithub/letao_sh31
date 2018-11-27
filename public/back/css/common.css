@@ -11,6 +11,9 @@ ul {
   margin: 0;
   list-style: none;
 }
+.red {
+  color: #A94442;
+}
 
 
 .body_bg {
