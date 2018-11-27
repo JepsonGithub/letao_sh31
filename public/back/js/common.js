@@ -35,4 +35,28 @@ $( document ).ajaxStop(function() {
     // 关闭进度条
     //NProgress.done();
   }, 500)
+});
+
+
+
+
+$(function() {
+
+  // 公共的功能:
+  // 1. 左侧二级菜单切换
+  $('.category').click(function() {
+    $(this).next().stop().slideToggle();
+  })
+
+
+  // 2. 左侧侧边栏切换
+  $('.icon_left').click(function() {
+    $('.lt_aside').toggleClass("hidemenu");
+    $('.lt_main').toggleClass("hidemenu");
+    $('.lt_topbar').toggleClass("hidemenu");
+  })
+
+
+  // 3. 退出功能
+
 })
