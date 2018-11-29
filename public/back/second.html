@@ -100,9 +100,37 @@
         </div>
         <div class="modal-body">
           <!-- bootstrap有格式规范, 每一行需要外层包一个 form-group -->
+
           <div class="form-group">
-            <input type="text" name="categoryName" class="form-control" placeholder="请输入一级分类">
+            <!-- 下拉框 -->
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+                <span id="dropdownText">请选择一级分类</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <!-- 挖个坑 -->
+              </ul>
+            </div>
           </div>
+
+          <div class="form-group">
+            <input type="text" name="brandName" class="form-control" placeholder="请输入二级分类">
+          </div>
+
+          <div class="form-group">
+            <label for="fileupload" class="btn btn-default">上传图片</label>
+            <!--
+              指定name, 用于后台接收图片对象
+              指定data-url, 配置后台图片上传的接口地址
+            -->
+            <input type="file" name="pic1" data-url="/category/addSecondCategoryPic" id="fileupload" style="display: none;">
+          </div>
+
+          <div class="form-group" id="imgBox">
+            <img src="./images/none.png" style="width: 100px;">
+          </div>
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -161,9 +189,19 @@
 </script>
 
 
+<script type="text/html" id="dropdownTpl">
+  {{ each rows v i }}
+    <li><a href="#">{{ v.categoryName }}</a></li>
+  {{ /each }}
+</script>
+
+
 
 
 <script src="./lib/jquery/jquery.min.js"></script>
+<script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
+
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
