@@ -44,6 +44,17 @@
 
 </div>
 
+<!--
+  模板引擎
+  (1) 标准语法  特点: 方便简单
+      {{  }}
+      {{ username }}
+
+  (2) 原生语法  特点: 逻辑性强, 支持直接编写 js 语句
+      <%  %>
+      <%= username %>
+-->
+
 <script type="text/html" id="productTpl">
   <!-- 轮播图 -->
   <div class="mui-slider">
@@ -75,45 +86,40 @@
 
   <!-- 产品标题 -->
   <div class="lt_pro_name item_box">
-    <strong>商品名称</strong>
+    <strong>{{ proName }}</strong>
   </div>
 
   <!-- 产品价格 -->
   <div class="lt_price item_box">
     价格:
-    <span class="price">¥998</span>
-    <span class="oldPrice">¥1980</span>
+    <span class="price">¥{{ price }}</span>
+    <span class="oldPrice">¥{{ oldPrice }}</span>
   </div>
 
   <!-- 产品尺码 -->
   <div class="lt_size item_box">
     尺码:
-    <span>40</span>
-    <span class="current">40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
-    <span>40</span>
+    <%
+      // 有个变量 size "36-48"
+      var arr = size.split("-");  // ["36", "48"]
+      var start = arr[0]; // 36
+      var end = arr[1];   // 48
+      for ( var i = start; i <= end; i++ ) {
+    %>
+      <span>{{ i }}</span>
+    <%
+      }
+    %>
   </div>
 
   <!-- 产品数量 -->
   <div class="lt_num item_box">
     数量:
 
-    <!-- 数字框 -->
-    <!-- data-numbox-min 配置可输入的最小值,
-         data-numbox-max 配置可输入的最大值
-         data-numbox-step 配置步长, 点击 +- 号修改的个数
-     -->
-    <div class="mui-numbox" data-numbox-min="1" data-numbox-max="20" data-numbox-step='1'>
+    <!-- data-numbox-min 设置最小值 -->
+    <!-- data-numbox-max 设置最大值 -->
+    <!-- data-numbox-step 每次加减的步长 -->
+    <div class="mui-numbox" data-numbox-min="1" data-numbox-max="{{ num }}" data-numbox-step="1">
       <!-- "-"按钮，点击可减小当前数值 -->
       <button class="mui-btn mui-numbox-btn-minus" type="button">-</button>
       <input class="mui-numbox-input" type="number" />
@@ -122,13 +128,13 @@
     </div>
 
 
-    <span>剩余数量: 20双 </span>
+    <span>剩余数量: {{ num }}双 </span>
 
   </div>
 
   <!-- 详情描述 -->
   <div class="lt_price item_box">
-    详情: 详情描述
+    详情: {{ proDesc }}
   </div>
 </script>
 
