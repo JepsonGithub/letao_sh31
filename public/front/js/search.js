@@ -150,6 +150,9 @@ $(function() {
 
     // 重置搜索框
     $('.search_input').val("");
+
+    // 跳转页面, 跳转到搜索列表页, 且将搜索关键字传递过去
+    location.href = "searchList.html?key=" + key;
   })
 
 })

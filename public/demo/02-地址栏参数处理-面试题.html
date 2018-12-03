@@ -1,25 +1,18 @@
-/**
- * Created by 54721 on 2018/11/30.
- */
-// 区域滚动初始化
-mui('.mui-scroll-wrapper').scroll({
-  deceleration: 0.0005, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
-  indicators: false
-});
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
 
+<!--
+  需求: html地址:  xxx.html?key=耐克&age=18&desc=帅
+       将地址栏参数解析, 获取所有的键值数据, 解析成一个对象
+       对象格式: { key: '耐克', age: 18, desc: '帅' }
+-->
+<script>
 
-// 轮播图初始化
-// 获得slider插件对象
-var gallery = mui('.mui-slider');
-gallery.slider({
-  interval: 4000 //自动轮播周期，若为0则不自动播放，默认为0；
-});
-
-
-
-// 封装好的, 专门用于解析地址栏参数的方法
-// 返回具体的参数值
-function getSearch( k ) {
   var str = location.search; // 获取地址栏参数
 
   // 解码成中文
@@ -42,5 +35,9 @@ function getSearch( k ) {
     obj[ key ] = value;
   })
 
-  return obj[ k ];
-}
+  console.log( obj );
+
+</script>
+
+</body>
+</html>
